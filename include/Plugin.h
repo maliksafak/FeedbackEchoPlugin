@@ -23,7 +23,7 @@ public:
     bool hasEditor() const override                        { return true;   }
 
     //==============================================================================
-    const String getName() const override                  { return "Audio PlugIn"; }
+    const String getName() const override                  { return "Feedback Echo PlugIn"; }
     bool acceptsMidi() const override                      { return false; }
     bool producesMidi() const override                     { return false; }
     double getTailLengthSeconds() const override           { return 0; }
@@ -51,7 +51,13 @@ public:
 
 private:
     //==============================================================================
-    AudioParameterFloat* gain;
+    AudioParameterFloat* delay_time;
+    AudioParameterFloat* attenuation;
+    AudioParameterFloat* dry;
+    AudioParameterFloat* wet;
+
+    float* line;
+    size_t line_head;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioPlugin)
